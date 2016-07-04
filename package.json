@@ -1,0 +1,26 @@
+{
+  "name": "dropBuffer",
+  "version": "0.0.0",
+  "description": "",
+  "main": "./index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/classfellow/dropbuffer.git"
+  },
+  "keywords": [ 
+  ],
+  "author": "YouJia",
+  "license": "MIT",
+  "gypfile": true,
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "bugs": {
+  }
+}
