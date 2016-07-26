@@ -22,11 +22,12 @@ void Method(const v8::FunctionCallbackInfo<v8::Value>& args) {
   if(!HasInstance(buf))
     return;
   Local<Uint8Array> array = buf.As<Uint8Array>();
-  if (array->Buffer()->GetContents().ByteLength() <= 8 * 1024
-    || array->Buffer()->IsExternal())
+  size_t bufLen = array->Buffer()->GetContents().ByteLength();
+  if (bufLen <= 8 * 1024 || array->Buffer()->IsExternal())
     return;
   ArrayBuffer::Contents array_c = array->Buffer()->Externalize();
   free(array_c.Data());
+  isolate->AdjustAmountOfExternalAllocatedMemory(bufLen);
 }
 
 void init(v8::Local<v8::Object> exports, v8::Local<v8::Object> module) {
